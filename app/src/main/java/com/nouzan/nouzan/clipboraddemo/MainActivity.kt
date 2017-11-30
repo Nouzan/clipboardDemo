@@ -24,7 +24,8 @@ class MainActivity : BaseActivity() {
         //监听剪贴板
         val clipboard:ClipboardManager = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
         clipboard.addPrimaryClipChangedListener {
-            SecondActivity.actionStart(MainActivity@this, "我被剪贴板召唤而来")
+            val data = clipboard.primaryClip.getItemAt(0).text
+            SecondActivity.actionStart(MainActivity@this, data.toString())
         }
     }
 
